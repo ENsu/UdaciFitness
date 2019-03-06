@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": "https://38-6pk.anonymous.udacifitness.exp.direct",
-  "packagerNgrokUrl": "https://packager.38-6pk.anonymous.udacifitness.exp.direct",
-  "ngrokPid": 79727
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

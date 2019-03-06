@@ -4,6 +4,8 @@ import { getMetricMetaInfo, timeToString } from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
 import DateHeader from './DateHeader'
+import { Ionicons } from  '@expo/vector-icons'
+import TextButton from './TextButton'
 
 function SubmitBtn ({ onPress }) {
 	return (
@@ -19,7 +21,7 @@ export default class AddEntry extends Component {
 		bike: 0,
 		swim: 0,
 		sleep: 0,
-		eat: 0
+		eat: 0,
 	}
 
 	increment = (metric) => {
@@ -43,7 +45,7 @@ export default class AddEntry extends Component {
 		})
 	}
 
-	slide = (metric) => {
+	slide = (metric, value) => {
 		this.setState(() => ({
 			[metric]: value
 		}))
@@ -60,7 +62,7 @@ export default class AddEntry extends Component {
 			bike: 0,
 			swim: 0,
 			sleep: 0,
-			eat: 0	
+			eat: 0,
 		}))
 
 		// Navigate to home
@@ -71,12 +73,34 @@ export default class AddEntry extends Component {
 
 	}
 
+	reset = () => {
+		const key=timeToString()
+
+		// Update Redux
+
+		// Route to Home
+
+		// update "DB"
+
+	}
 	render() {
 		const metaInfo = getMetricMetaInfo()
+
+		if (this.props.alreadyLogged) {
+			return (
+				<View>
+					<Ionicons name='md-happy' size={100} />
+					<Text>You already logged your information for today</Text>
+					<TextButton onPress={this.reset}>
+						Reset
+					</TextButton>
+				</View>
+			)
+		}
+
 		return (
 			<View>
 				<DateHeader date={(new Date()).toLocaleDateString()} />
-				<Text>{JSON.stringify(this.state)}</Text>
 				{Object.keys(metaInfo).map((key) => {
 					const { getIcon, type, ...rest} = metaInfo[key]
 					const value = this.state[key]

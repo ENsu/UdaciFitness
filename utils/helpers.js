@@ -89,7 +89,7 @@ export function getMetricMetaInfo (metric) {
         )
       }
     },
-    spleep: {
+    sleep: {
       displayName: "Sleep",
       max: 24,
       unit: 'hours',
